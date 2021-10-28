@@ -2,7 +2,7 @@ from unittest import TestCase
 
 import chess
 
-from agent.scorer import Scorer
+from agent import Scorer
 
 
 class TestScorer(TestCase):
