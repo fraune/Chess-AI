@@ -7,7 +7,7 @@ from agent.scorer import Scorer
 
 class TestScorer(TestCase):
 
-    def test_scorer_starts_zero(self):
+    def test_scorer_starts_equal(self):
         # Arrange
         board = chess.Board()
         scorer = Scorer()
