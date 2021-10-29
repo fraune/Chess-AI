@@ -8,7 +8,7 @@ from agent import Scorer
 class BoardStateTreeNode:
     _board: chess.Board
     _move: chess.Move
-    _children: list['BoardStateTreeNode']
+    _children: list['BoardStateTreeNode'] = []
     _is_end_game: bool
     _turn_color: bool  # True if white, False if black
     _max_children: int  # Limit width of tree
@@ -19,13 +19,17 @@ class BoardStateTreeNode:
         self._max_children = max_children
 
     def populate_tree(self, depth: int):
+        if depth <= 0:
+            return
+
         moves = self._board.legal_moves()
         while len(moves) > self._max_children:
             index_to_remove = random.randint(0, len(moves) - 1)
             moves.pop(index_to_remove)
 
         for move in moves:
-            child = BoardStateTreeNode(self._board, move, self._max_children)
+            child_board = self._board.copy().push(move)  # push move here?
+            child = BoardStateTreeNode(child_board, move, self._max_children)
             child.populate_tree(depth - 1)
             self._children.append(child)
 
