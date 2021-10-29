@@ -1,3 +1,5 @@
+import random
+
 import chess
 
 from agent import Scorer
@@ -17,8 +19,15 @@ class BoardStateTreeNode:
         self._max_children = max_children
 
     def populate_tree(self, depth: int):
-        # TODO: write this
-        print('pop tree')
+        moves = self._board.legal_moves()
+        while (num_moves := len(moves)) > self._max_children:
+            index_to_remove = random.randint(0, num_moves)
+            moves.pop(index_to_remove)
+
+        for move in moves:
+            child = BoardStateTreeNode(self._board, move, self._max_children)
+            child.populate_tree(depth - 1)
+            self._children.append(child)
 
     def enumerate_moves(self) -> list[chess.Move]:
         # TODO: write this
