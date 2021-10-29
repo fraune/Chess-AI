@@ -26,8 +26,8 @@ class Scorer:
         a negative value indicates the black player is in a stronger position. The
         magnitude scores indicate the amount of advantage.
         """
-        # TODO: Update - both sides have no queens OR every side which has a queen has additionally no other pieces or one
-        #  minorpiece maximum
+        # TODO: Update - both sides have no queens OR every side which has a queen has additionally no other pieces or
+        #  one minorpiece maximum
         end_game: bool = False
 
         white_score = 0
