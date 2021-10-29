@@ -11,3 +11,18 @@ class Playground(TestCase):
             index_to_remove = random.randint(0, len(moves) - 1)
             moves.pop(index_to_remove)
             print(moves)
+
+    def test_constuctor(self):
+        x = ASDF()
+        x.outtt()
+
+
+class ASDF:
+    mylist: list[int]
+
+    def __init__(self):
+        self.mylist = []
+        self.mylist.append(111)
+
+    def outtt(self):
+        print(self.mylist)
