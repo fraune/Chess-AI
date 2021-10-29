@@ -20,8 +20,8 @@ class BoardStateTreeNode:
 
     def populate_tree(self, depth: int):
         moves = self._board.legal_moves()
-        while (num_moves := len(moves)) > self._max_children:
-            index_to_remove = random.randint(0, num_moves)
+        while len(moves) > self._max_children:
+            index_to_remove = random.randint(0, len(moves) - 1)
             moves.pop(index_to_remove)
 
         for move in moves:
