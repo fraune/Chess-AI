@@ -30,10 +30,7 @@ class BoardStateTreeNode:
             print('populate_tree: No more moves to populate. Game is over at current node.')
             return
 
-        moves = []
-        for move in self._board.legal_moves:
-            if self._max_children is None:
-                moves.append(move)
+        moves = self.enumerate_moves()
 
         # Reduce move set to num max children
         print(f'populate_tree: {len(moves)} legal moves found')
@@ -59,7 +56,10 @@ class BoardStateTreeNode:
         return my_options
 
     def enumerate_moves(self) -> list[chess.Move]:
-        return self._board.legal_moves
+        moves = []
+        for move in self._board.legal_moves:
+            moves.append(move)
+        return moves
 
     def _gather_leaf_scores(self, node: 'BoardStateTreeNode', score_func: Scorer) -> float:
         my_score = score_func.evaluate(node._board)
