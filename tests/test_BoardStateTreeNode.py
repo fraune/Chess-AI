@@ -3,10 +3,8 @@ import sys
 from unittest import TestCase
 
 import chess
-from pytest import raises
 
 from agent.BoardStateTreeNode import BoardStateTreeNode
-from agent.Scorer import Scorer
 
 
 class TestBoardStateTreeNode(TestCase):
