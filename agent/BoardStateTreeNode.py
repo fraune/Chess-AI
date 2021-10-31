@@ -62,7 +62,7 @@ class BoardStateTreeNode:
         return self._board.legal_moves
 
     def _gather_leaf_scores(self, node: 'BoardStateTreeNode', score_func: Scorer) -> float:
-        my_score = score_func.evaluate(node)
+        my_score = score_func.evaluate(node._board)
         scores = [my_score]
         for child in node._children:
             scores.append(self._gather_leaf_scores(child, score_func))
