@@ -64,20 +64,6 @@ class TestBoardStateTreeNode(TestCase):
         # Assert
         assert len(root_node._children) == 2
 
-    # def test_evaluate_moves_equal_weights(self):
-    #     # Arrange
-    #     game_nearly_over_fen = '4k3/1R6/2Q4R/1P2P1P1/P6P/8/8/1NB1KBN1 b - - 2 36'
-    #     board = chess.Board(game_nearly_over_fen)
-    #     root_node = BoardStateTreeNode(board)
-    #
-    #     # Act
-    #     root_node.populate_tree(5)
-    #     moves = root_node.evaluate_moves(Scorer(), None)
-    #
-    #     # Assert
-    #     assert len(root_node._children) == 2
-    #     assert moves[0][0] == moves[1][0]
-
     # def test_enumerate_moves(self):
     #     self.fail()
     #
