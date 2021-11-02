@@ -1,13 +1,14 @@
 import chess
 
 from agent import Player
+from agent.Player import RandomPlayer, SearchPlayer
 
 
 class ChessGame:
     _board: chess.Board
     # _played_turns: int  # redundant with Board.fullmove_number
-    _black_player: Player
-    _white_player: Player
+    _black_player: Player = RandomPlayer()
+    _white_player: Player = SearchPlayer()
 
     def play_turn(self) -> bool:
         # TODO: play
