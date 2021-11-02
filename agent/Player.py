@@ -18,7 +18,7 @@ class SearchPlayer(Player):
         self.tree_depth = depth
         self.tree_width = width
 
-    def play_move(self, board: chess.Board):
+    def get_next_move(self, board: chess.Board):
         bstn = BoardStateTreeNode(board, max_children=self.tree_width)
         bstn.populate_tree(self.tree_depth)
         moves = bstn.evaluate_moves(Scorer())
@@ -28,13 +28,14 @@ class SearchPlayer(Player):
             return
 
         moves.sort(key=lambda tup: tup[0], reverse=True)
-        move = moves[0][1]
-        board.push(move)
+
+        # index 0 picks tuple with highest score for white, index 1 picks move out of that tuple
+        return moves[0][1]
 
 
 class RandomPlayer(Player):
 
-    def play_move(self, board: chess.Board):
+    def get_next_move(self, board: chess.Board):
         bstn = BoardStateTreeNode(board)
         moves = bstn.enumerate_moves()
 
@@ -43,4 +44,4 @@ class RandomPlayer(Player):
             return
 
         move_index = random.randint(0, len(moves))
-        board.push(moves[move_index])
+        return moves[move_index]
