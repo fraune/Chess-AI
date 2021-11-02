@@ -3,48 +3,44 @@ import random
 import chess
 
 from agent.BoardStateTreeNode import BoardStateTreeNode
+from agent.Scorer import Scorer
 
 
 class Player:
-    _moves: list[chess.Move]
+    pass
+
+
+class SearchPlayer(Player):
+    tree_depth: int
+    tree_width: int
+
+    def __init__(self, depth: int, width: int):
+        self.tree_depth = depth
+        self.tree_width = width
 
     def play_move(self, board: chess.Board):
-        self._enumerate_game_states(board)
-        self._score_moves()
-        move = self._choose_move()
+        bstn = BoardStateTreeNode(board, max_children=self.tree_width)
+        bstn.populate_tree(self.tree_depth)
+        moves = bstn.evaluate_moves(Scorer())
+
+        if len(moves) == 0:
+            print('No scored moves')
+            return
+
+        moves.sort(key=lambda tup: tup[0], reverse=True)
+        move = moves[0][1]
         board.push(move)
 
 
 class RandomPlayer(Player):
-    def _enumerate_game_states(self, board: chess.Board):
-        bstn = BoardStateTreeNode(board)
-        self.moves = bstn.enumerate_moves()
-
-    def _score_moves(self):
-        pass
-
-    def _choose_move(self):
-        move_index = random.randint(0, len(self._moves))
-        return self._moves[move_index]
-
-
-class SearchPlayer(Player):
-    def _enumerate_game_states(self, board: chess.Board):
-        bstn = BoardStateTreeNode(board)
-        self.moves = bstn.enumerate_moves()
-
-    def _score_moves(self):
-        # TODO: write
-        # is this needed for random player?
-        print('xyz')
-
-    def _choose_move(self):
-        move_index = random.randint(0, len(self._moves))
-        return self._moves[move_index]
 
     def play_move(self, board: chess.Board):
-        # TODO: write
-        self._enumerate_game_states(board)
-        # self._score_moves()
-        move = self._choose_move()
-        board.push(move)
+        bstn = BoardStateTreeNode(board)
+        moves = bstn.enumerate_moves()
+
+        if len(moves) <= 0:
+            print('No scored moves')
+            return
+
+        move_index = random.randint(0, len(moves))
+        board.push(moves[move_index])
