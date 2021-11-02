@@ -47,19 +47,19 @@ class BoardStateTreeNode:
             child.populate_tree(depth - 1)
             self._children.append(child)
 
-    def evaluate_moves(self, score_func: Scorer, agg_func) -> list[(float, chess.Move)]:
+    def enumerate_moves(self) -> list[chess.Move]:
+        moves = []
+        for move in self._board.legal_moves:
+            moves.append(move)
+        return moves
+
+    def evaluate_moves(self, score_func: Scorer) -> list[(float, chess.Move)]:
         # might be more efficient to evaluate moves when the tree is built
         # agg func is _gather_leaf_scores?
         my_options = []
         for child in self._children:
             my_options.append((self._gather_leaf_scores(child, score_func), child._move))
         return my_options
-
-    def enumerate_moves(self) -> list[chess.Move]:
-        moves = []
-        for move in self._board.legal_moves:
-            moves.append(move)
-        return moves
 
     def _gather_leaf_scores(self, node: 'BoardStateTreeNode', score_func: Scorer) -> float:
         my_score = score_func.evaluate(node._board)
