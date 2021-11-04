@@ -42,7 +42,7 @@ class BoardStateTreeNode:
                 index_to_remove = random.randint(0, len(moves) - 1)
                 moves.pop(index_to_remove)
 
-        self.logger.log(f'populate_tree: {len(moves)} moves to be added as children')
+        # self.logger.log(f'populate_tree: {len(moves)} moves to be added as children')
         for move in moves:
             child_board = self._board.copy()
             child_board.push(move)  # push move here?
