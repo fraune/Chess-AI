@@ -10,7 +10,7 @@ from utility.Logger import Logger
 
 
 def create_player_from_enum(player_type: PlayerType):
-    if player_type is PlayerType.Random:
+    if player_type is PlayerType.RANDOM:
         return RandomPlayer()
     elif player_type is PlayerType.SEARCH:
         return SearchPlayer(MAXIMUM_TREE_DEPTH, MAXIMUM_TREE_WIDTH)
