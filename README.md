@@ -32,4 +32,3 @@ basic player implementation.
 ## TODO
 
 - Catch errors at top level and log
-- Log number of pieces left on board at end game
