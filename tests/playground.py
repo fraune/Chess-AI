@@ -22,7 +22,7 @@ def create_duck(type: DuckType):
     elif type is DuckType.RUBBER:
         return RubberDuck()
     else:
-        raise Exception(f'Unknown DuckType: {type}')
+        raise ValueError(f'Unknown DuckType: {type}')
 
 
 class Duck:
