@@ -1,3 +1,5 @@
+from datetime import datetime
+
 import chess
 
 from agent import Player
@@ -8,13 +10,16 @@ from utility.Logger import Logger
 class ChessGame:
     logger: Logger
     _board: chess.Board = chess.Board()
-    # _played_turns: int  # redundant with Board.fullmove_number?
-    _black_player: Player = RandomPlayer()
+    _plays_made: int = 0
     _white_player: Player = RandomPlayer()  # SearchPlayer(3, 15)
+    _black_player: Player = RandomPlayer()
+    _start_time: datetime
+    _end_time: datetime
 
     def __init__(self):
         self.logger = Logger()
         self.logger.log('Chess game initialized')
+        self._start_time = datetime.now()
 
     def reset(self):
         self.logger.log('Chess game reset')
@@ -29,6 +34,9 @@ class ChessGame:
         self.print_game_stats()
         self.logger.log({'fen': self._board.fen()})
 
+        self._end_time = datetime.now()
+        return self._board.is_game_over()
+
     def play_turn(self) -> bool:
         move = self._white_player.get_next_move(self._board) \
             if self._board.turn else self._black_player.get_next_move(self._board)
@@ -36,6 +44,7 @@ class ChessGame:
         if move:
             self.logger.log(f'{self._whose_turn_color()} pushing {move}')
             self._board.push(move)
+            self._plays_made += 1
         else:
             self.logger.log(f'{self._whose_turn_color()} has no moves')
 
@@ -74,3 +83,18 @@ class ChessGame:
             return 'draw'
         else:
             return '???'
+
+    def summary(self) -> str:
+        return {
+            'white_player_type': self._white_player.player_type.name,
+            'black_player_type': self._black_player.player_type.name,
+            'game_state': self._game_status(),
+            'outcome': self._board.outcome().termination.name if self._board.is_game_over() else None,
+            'winner': self._winner(),
+            'round_number': self._board.fullmove_number,
+            'plays_made': self._plays_made,
+            'game_start_time': str(self._start_time),
+            'game_end_time': str(self._end_time),
+            'game_time': str(self._end_time - self._start_time),
+            'fen': self._board.fen()
+        }
