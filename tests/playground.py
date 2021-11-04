@@ -1,28 +1,42 @@
-import random
-from unittest import TestCase
+from enum import Enum
 
 
-class Playground(TestCase):
-
-    def test_iter(self):
-        moves = ['a', 'b', 'c', 'd', 'e', 'f', 'g']
-        print(moves)
-        while len(moves) > 3:
-            index_to_remove = random.randint(0, len(moves) - 1)
-            moves.pop(index_to_remove)
-            print(moves)
-
-    def test_constuctor(self):
-        x = ASDF()
-        x.outtt()
+def test_duck_creator():
+    md1 = create_duck(DuckType.MALLARD)
+    md2 = create_duck(DuckType.MALLARD)
+    assert md1.my_sound == 'quack'
+    assert md2.my_sound == 'quack'
+    md1.my_sound = 'hi'
+    assert md1.my_sound == 'hi'
+    assert md2.my_sound == 'quack'
 
 
-class ASDF:
-    mylist: list[int]
+class DuckType(Enum):
+    MALLARD = 1
+    RUBBER = 2
+
+
+def create_duck(type: DuckType):
+    if type is DuckType.MALLARD:
+        return MallardDuck()
+    elif type is DuckType.RUBBER:
+        return RubberDuck()
+    else:
+        raise Exception(f'Unknown DuckType: {type}')
+
+
+class Duck:
+    my_sound: str
 
     def __init__(self):
-        self.mylist = []
-        self.mylist.append(111)
+        self.my_sound = "unknown"
 
-    def outtt(self):
-        print(self.mylist)
+
+class MallardDuck(Duck):
+    def __init__(self):
+        self.my_sound = 'quack'
+
+
+class RubberDuck(Duck):
+    def __init__(self):
+        self.my_sound = 'squeak'
