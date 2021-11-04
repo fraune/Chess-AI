@@ -1,4 +1,8 @@
-# These weights are for white pieces. Black starts on top, White on bottom. Capital letters for white pieces, lower-case for black pieces
+"""
+8x8 piece square tables to score current board positions. Black starts on the top of the board (list indices 0-15) and
+white starts on bottom of the board (list indices 48-63). The weights used here are derived from the Simplified
+Evaluation Function, listed here: https://www.chessprogramming.org/Simplified_Evaluation_Function
+"""
 
 white_pawn_weights = [
     0, 0, 0, 0, 0, 0, 0, 0,

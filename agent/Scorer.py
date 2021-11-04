@@ -2,7 +2,7 @@ from enum import Enum
 
 import chess
 
-from agent.scorer_weights import white_pawn_weights, white_knight_weights, white_bishop_weights, white_rook_weights, \
+from agent.scorer_weights_sef import white_pawn_weights, white_knight_weights, white_bishop_weights, white_rook_weights, \
     white_queen_weights, white_king_weights_middle_game, white_king_weights_end_game, black_pawn_weights, \
     black_knight_weights, black_bishop_weights, black_rook_weights, black_queen_weights, black_king_weights_middle_game, \
     black_king_weights_end_game
