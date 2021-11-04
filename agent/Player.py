@@ -1,10 +1,16 @@
 import random
+from enum import Enum
 
 import chess
 
 from agent.BoardStateTreeNode import BoardStateTreeNode
 from agent.Scorer import Scorer
 from utility.Logger import Logger
+
+
+class PlayerType(Enum):
+    RANDOM = 'random'
+    SEARCH = 'search'
 
 
 class Player:
@@ -15,6 +21,7 @@ class Player:
 
 
 class SearchPlayer(Player):
+    player_type = PlayerType.SEARCH
     _tree_depth: int
     _tree_width: int
 
@@ -38,6 +45,7 @@ class SearchPlayer(Player):
 
 
 class RandomPlayer(Player):
+    player_type = PlayerType.RANDOM
 
     def get_next_move(self, board: chess.Board):
         bstn = BoardStateTreeNode(board)
