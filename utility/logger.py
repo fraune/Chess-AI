@@ -16,7 +16,10 @@ class Logger(object):
     def _initialize(self, print_to_console: bool = True, print_to_file: bool = False, file_name: str = None):
         self._print_to_console = print_to_console
         if print_to_file:
-            self._file = open(file_name, 'a')
+            if not file_name:
+                now = datetime.datetime.now().strftime('%Y%m%d%H%M%S')
+                file_name = f'{now}.chess'
+            self._file = open(f'output/{file_name}', 'a')
             self._print_to_file = print_to_file
             self.log('Logger initialized')
 
