@@ -10,7 +10,7 @@ class ChessGame:
     _board: chess.Board = chess.Board()
     # _played_turns: int  # redundant with Board.fullmove_number?
     _black_player: Player = RandomPlayer()
-    _white_player: Player = SearchPlayer(3, 15)
+    _white_player: Player = RandomPlayer()  # SearchPlayer(3, 15)
 
     def __init__(self):
         self.logger = Logger()
