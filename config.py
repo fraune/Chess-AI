@@ -1,12 +1,12 @@
 from agent.Player import PlayerType
 
-# utility.Logger
+# utility.Logger.Logger
 PRINT_TO_CONSOLE: bool = True
 PRINT_TO_FILE: bool = True
 LOG_FILE_NAME: str = None  # Only used if PRINT_TO_FILE is set. Overrides Logger's automatic file name generation.
 
-# utility.SummaryWriter
-SUMMARY_FILE_NAME: str = None  # Overrides SummaryWriter's automatic file name generation.
+# utility.SummaryWriter.SummaryWriter
+SUMMARY_FILE_NAME: str = None  # Overrides SummaryWriter's automatic file name generation
 
 # utility.simulator
 GAMES_TO_SIMULATE: int = 3
