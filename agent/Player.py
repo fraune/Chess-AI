@@ -43,5 +43,5 @@ class RandomPlayer(Player):
             print('No scored moves')
             return
 
-        move_index = random.randint(0, len(moves))
+        move_index = random.randint(0, len(moves) - 1)
         return moves[move_index]
