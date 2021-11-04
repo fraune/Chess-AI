@@ -5,12 +5,22 @@ import chess
 
 from agent.BoardStateTreeNode import BoardStateTreeNode
 from agent.Scorer import Scorer
+from config import MAXIMUM_TREE_DEPTH, MAXIMUM_TREE_WIDTH
 from utility.Logger import Logger
 
 
 class PlayerType(Enum):
     RANDOM = 'random'
     SEARCH = 'search'
+
+
+def create_player_from_enum(player_type: PlayerType):
+    if player_type is PlayerType.Random:
+        return RandomPlayer()
+    elif player_type is PlayerType.SEARCH:
+        return SearchPlayer(MAXIMUM_TREE_DEPTH, MAXIMUM_TREE_WIDTH)
+    else:
+        raise ValueError(f'Unknown PlayerType: {player_type}')
 
 
 class Player:

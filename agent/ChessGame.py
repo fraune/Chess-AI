@@ -3,7 +3,8 @@ from datetime import datetime
 import chess
 
 from agent import Player
-from agent.Player import RandomPlayer  # , SearchPlayer
+from agent.Player import create_player_from_enum
+from config import WHITE_PLAYER_TYPE, BLACK_PLAYER_TYPE
 from utility.Logger import Logger
 
 
@@ -11,14 +12,16 @@ class ChessGame:
     logger: Logger
     _board: chess.Board
     _plies_made: int = 0
-    _white_player: Player = RandomPlayer()  # SearchPlayer(3, 15)
-    _black_player: Player = RandomPlayer()
+    _white_player: Player
+    _black_player: Player
     _start_time: datetime
     _end_time: datetime
 
     def __init__(self):
         self.logger = Logger()
         self._board = chess.Board()
+        self._white_player = create_player_from_enum(WHITE_PLAYER_TYPE)
+        self._black_player = create_player_from_enum(BLACK_PLAYER_TYPE)
         self.logger.log('Chess game initialized')
         self._start_time = datetime.now()
 
