@@ -24,9 +24,12 @@ Unit testing aided by this board editor to generate arbitrary FENs
 
 - https://lichess.org/editor
 
-## Help
-
 I found someone's Jupyter Notebook, which explains some basics of using the `python-chess` library. It also includes a
 basic player implementation.
 
 - https://jupyter.brynmawr.edu/services/public/dblank/CS371%20Cognitive%20Science/2016-Fall/Programming%20a%20Chess%20Player.ipynb
+
+## TODO
+
+- Catch errors at top level and log
+- Log number of pieces left on board at end game
