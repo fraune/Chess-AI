@@ -1,22 +1,24 @@
 import json
 from datetime import datetime
 
+from config import SUMMARY_FILE_NAME
+
 
 class SummaryWriter(object):
     _instance = None
     _file = None
     _dicts_written = 0
 
-    def __new__(cls, file_name: str = None):
+    def __new__(cls):
         if cls._instance is None:
             cls._instance = super(SummaryWriter, cls).__new__(cls)
-            cls._instance._initialize(file_name)
+            cls._instance._initialize(SUMMARY_FILE_NAME)
         return cls._instance
 
     def _initialize(self, file_name: str = None):
         if not file_name:
             now = datetime.now().strftime('%Y%m%d%H%M%S')
-            file_name = f'{now}.chess.summary'
+            file_name = f'{now}-chess-summary.json'
         self._file = open(f'output/{file_name}', 'w')
         self._file.write('[')
 
