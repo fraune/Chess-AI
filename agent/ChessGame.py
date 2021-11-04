@@ -2,7 +2,7 @@ import chess
 
 from agent import Player
 from agent.Player import RandomPlayer, SearchPlayer
-from utility.logger import Logger
+from utility.Logger import Logger
 
 
 class ChessGame:

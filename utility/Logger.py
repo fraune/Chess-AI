@@ -1,4 +1,4 @@
-import datetime
+from datetime import datetime
 
 
 class Logger(object):
@@ -17,14 +17,14 @@ class Logger(object):
         self._print_to_console = print_to_console
         if print_to_file:
             if not file_name:
-                now = datetime.datetime.now().strftime('%Y%m%d%H%M%S')
-                file_name = f'{now}.chess'
+                now = datetime.now().strftime('%Y%m%d%H%M%S')
+                file_name = f'{now}.chess.game'
             self._file = open(f'output/{file_name}', 'a')
             self._print_to_file = print_to_file
             self.log('Logger initialized')
 
     def log(self, text: str, flush: bool = False):
-        now = datetime.datetime.now()
+        now = datetime.now()
         message = f'[{now}] {text}'
         if self._print_to_console:
             print(message)

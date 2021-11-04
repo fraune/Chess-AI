@@ -4,6 +4,7 @@ import chess
 
 from agent.BoardStateTreeNode import BoardStateTreeNode
 from agent.Scorer import Scorer
+from utility.Logger import Logger
 
 
 class Player:
