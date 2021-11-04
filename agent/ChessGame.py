@@ -18,12 +18,12 @@ class ChessGame:
     _end_time: datetime
 
     def __init__(self):
+        self._start_time = datetime.now()
         self.logger = Logger()
         self._board = chess.Board()
         self._white_player = create_player_from_enum(WHITE_PLAYER_TYPE)
         self._black_player = create_player_from_enum(BLACK_PLAYER_TYPE)
         self.logger.log('Chess game initialized')
-        self._start_time = datetime.now()
 
     def reset(self):
         self.logger.log('Chess game reset')
