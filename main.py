@@ -2,15 +2,18 @@ from agent.ChessGame import ChessGame
 from utility.Logger import Logger
 from utility.SummaryWriter import SummaryWriter
 
+# In testing, most games completed in less than 300 random plies
+PLIES_TO_SIMULATE = 1000
 
-def run_simulation(sim_number: int = 1):
+
+def run_simulation(simulation_number: int = 1):
     logger = Logger(print_to_file=False)
-    logger.log(f'Simulation {sim_number} beginning')
+    logger.log(f'Simulation {simulation_number} beginning')
 
     game = ChessGame()
-    game.play_until(999)
+    game.play_until(PLIES_TO_SIMULATE)
 
-    logger.log(f'Simulation {sim_number} complete')
+    logger.log(f'Simulation {simulation_number} complete')
     logger.close()
 
     return game.summary()

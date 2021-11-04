@@ -3,14 +3,14 @@ from datetime import datetime
 import chess
 
 from agent import Player
-from agent.Player import RandomPlayer, SearchPlayer
+from agent.Player import RandomPlayer  # , SearchPlayer
 from utility.Logger import Logger
 
 
 class ChessGame:
     logger: Logger
     _board: chess.Board = chess.Board()
-    _plays_made: int = 0
+    _plies_made: int = 0
     _white_player: Player = RandomPlayer()  # SearchPlayer(3, 15)
     _black_player: Player = RandomPlayer()
     _start_time: datetime
@@ -44,7 +44,7 @@ class ChessGame:
         if move:
             self.logger.log(f'{self._whose_turn_color()} pushing {move}')
             self._board.push(move)
-            self._plays_made += 1
+            self._plies_made += 1
         else:
             self.logger.log(f'{self._whose_turn_color()} has no moves')
 
@@ -54,7 +54,7 @@ class ChessGame:
         details = {
             'game status': self._game_status(),
             'next turn': self._whose_turn_color(),
-            'round number': self._board.fullmove_number,  # starts at 1, increments only after black moves
+            'turn number': self._board.fullmove_number,  # starts at 1, increments only after black moves
             'is check': self._board.is_check()
         }
 
@@ -91,8 +91,8 @@ class ChessGame:
             'game_state': self._game_status(),
             'outcome': self._board.outcome().termination.name if self._board.is_game_over() else None,
             'winner': self._winner(),
-            'round_number': self._board.fullmove_number,
-            'plays_made': self._plays_made,
+            'turn_number': self._board.fullmove_number,
+            'plies_made': self._plies_made,
             'game_start_time': str(self._start_time),
             'game_end_time': str(self._end_time),
             'game_time': str(self._end_time - self._start_time),
