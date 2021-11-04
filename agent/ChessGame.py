@@ -45,15 +45,13 @@ class ChessGame:
         details = {
             'game status': self._game_status(),
             'next turn': self._whose_turn_color(),
-            'turn number': self._board.fullmove_number,  # starts at 1, increments only after black moves
+            'round number': self._board.fullmove_number,  # starts at 1, increments only after black moves
             'is check': self._board.is_check()
         }
 
         if self._board.is_game_over():
-            details['is checkmate'] = self._board.is_checkmate()
-            details['is stalemate'] = self._board.is_stalemate()
-            details['winning color'] = self._board.outcome().winner
-            details['outcome'] = self._board.outcome()
+            details['winning color'] = self._winner()
+            details['outcome'] = self._board.outcome().termination.name
 
         self.logger.log(details)
 
@@ -62,3 +60,17 @@ class ChessGame:
 
     def _whose_turn_color(self) -> str:
         return 'white' if self._board.turn else 'black'
+
+    def _winner(self) -> str:
+        if not self._board.is_game_over():
+            return None
+
+        winner = self._board.outcome().winner
+        if winner is True:
+            return 'white'
+        elif winner is False:
+            return 'black'
+        elif winner is None:
+            return 'draw'
+        else:
+            return '???'
