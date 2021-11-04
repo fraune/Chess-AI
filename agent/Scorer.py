@@ -2,10 +2,10 @@ from enum import Enum
 
 import chess
 
-from agent.scorer_weights_sef import white_pawn_weights, white_knight_weights, white_bishop_weights, white_rook_weights, \
-    white_queen_weights, white_king_weights_middle_game, white_king_weights_end_game, black_pawn_weights, \
-    black_knight_weights, black_bishop_weights, black_rook_weights, black_queen_weights, black_king_weights_middle_game, \
-    black_king_weights_end_game
+from agent.scorer_weights_simplified_evaluation_function import white_pawn_weights, white_knight_weights, \
+    white_bishop_weights, white_rook_weights, white_queen_weights, white_king_weights_middle_game, \
+    white_king_weights_end_game, black_pawn_weights, black_knight_weights, black_bishop_weights, black_rook_weights, \
+    black_queen_weights, black_king_weights_middle_game, black_king_weights_end_game
 
 
 class PieceType(Enum):
@@ -45,7 +45,7 @@ class Scorer:
     def _is_end_game(self, board: chess.Board):
         """ Is end game if:
                 a. Both sides have no queens OR
-                b. every side which has a queen has additionally no other pieces or one minorpiece maximum
+                b. every side which has a queen has additionally no other pieces or one minor-piece maximum
         """
         fen = board.fen()
 
@@ -71,7 +71,7 @@ class Scorer:
 
         return True
 
-    def _get_weight(self, sq: int, piece_type: PieceType, end_game: bool, white: bool):
+    def _get_weight(self, sq: int, piece_type, end_game: bool, white: bool):
         if piece_type == PieceType.PAWN.value:
             return white_pawn_weights[sq] if white else black_pawn_weights[sq]
         elif piece_type == PieceType.KNIGHT.value:

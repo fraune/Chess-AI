@@ -20,7 +20,7 @@ class TestScorer(TestCase):
         # Assert
         assert expected_is_end_game == actual_is_end_game
 
-    def test_is_end_game_two_queen_and_minorpiece(self):
+    def test_is_end_game_two_queen_and_minor_piece(self):
         # Arrange
         fen = '3q4/4n3/8/8/8/8/4N3/3Q4 w - - 0 1'
         board = chess.Board(fen)
@@ -33,7 +33,7 @@ class TestScorer(TestCase):
         # Assert
         assert expected_is_end_game == actual_is_end_game
 
-    def test_is_end_game_two_queen_white_minorpiece_black_pawn(self):
+    def test_is_end_game_two_queen_white_minor_piece_black_pawn(self):
         # Arrange
         fen = '3q4/4p3/8/8/8/8/4N3/3Q4 w - - 0 1'
         board = chess.Board(fen)

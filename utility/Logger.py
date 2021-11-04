@@ -26,9 +26,9 @@ class Logger(object):
             self._print_to_file = print_to_file
             self.log('Logger initialized')
 
-    def log(self, text: str, flush: bool = False):
+    def log(self, data, flush: bool = False):
         now = datetime.now()
-        message = f'[{now}] {text}'
+        message = f'[{now}] {data}'
         if self._print_to_console:
             print(message)
         if self._print_to_file:

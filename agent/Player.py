@@ -29,8 +29,8 @@ class RandomPlayer(Player):
     player_type = PlayerType.RANDOM
 
     def get_next_move(self, board: chess.Board):
-        bstn = BoardStateTreeNode(board)
-        moves = bstn.enumerate_moves()
+        root = BoardStateTreeNode(board)
+        moves = root.enumerate_moves()
 
         if len(moves) <= 0:
             self.logger.log('No scored moves')
@@ -46,13 +46,14 @@ class SearchPlayer(Player):
     _tree_width: int
 
     def __init__(self, depth: int, width: int):
+        super().__init__()
         self._tree_depth = depth
         self._tree_width = width
 
     def get_next_move(self, board: chess.Board):
-        bstn = BoardStateTreeNode(board, max_children=self._tree_width)
-        bstn.populate_tree(self._tree_depth)
-        moves = bstn.evaluate_moves(Scorer())
+        root = BoardStateTreeNode(board, max_children=self._tree_width)
+        root.populate_tree(self._tree_depth)
+        moves = root.evaluate_moves(Scorer())
 
         if len(moves) == 0:
             self.logger.log('No scored moves')

@@ -16,13 +16,13 @@ class DuckType(Enum):
     RUBBER = 2
 
 
-def create_duck(type: DuckType):
-    if type is DuckType.MALLARD:
+def create_duck(duck_type: DuckType):
+    if duck_type is DuckType.MALLARD:
         return MallardDuck()
-    elif type is DuckType.RUBBER:
+    elif duck_type is DuckType.RUBBER:
         return RubberDuck()
     else:
-        raise ValueError(f'Unknown DuckType: {type}')
+        raise ValueError(f'Unknown DuckType: {duck_type}')
 
 
 class Duck:
@@ -34,9 +34,11 @@ class Duck:
 
 class MallardDuck(Duck):
     def __init__(self):
+        super().__init__()
         self.my_sound = 'quack'
 
 
 class RubberDuck(Duck):
     def __init__(self):
+        super().__init__()
         self.my_sound = 'squeak'

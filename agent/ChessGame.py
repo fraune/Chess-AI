@@ -1,4 +1,5 @@
 from datetime import datetime
+from typing import Optional
 
 import chess
 
@@ -74,7 +75,7 @@ class ChessGame:
     def _whose_turn_color(self) -> str:
         return 'white' if self._board.turn else 'black'
 
-    def _winner(self) -> str:
+    def _winner(self) -> Optional[str]:
         if not self._board.is_game_over():
             return None
 
@@ -88,7 +89,14 @@ class ChessGame:
         else:
             return '???'
 
-    def summary(self) -> str:
+    def _count_pieces(self) -> tuple[int, int]:
+        fen = self._board.fen()
+        num_white = fen.count('P') + fen.count('N') + fen.count('B') + fen.count('R') + fen.count('Q') + fen.count('K')
+        num_black = fen.count('p') + fen.count('n') + fen.count('b') + fen.count('r') + fen.count('q') + fen.count('k')
+        return num_white, num_black
+
+    def summary(self) -> dict:
+        white_count, black_count = self._count_pieces()
         return {
             'white_player_type': self._white_player.player_type.name,
             'black_player_type': self._black_player.player_type.name,
@@ -100,5 +108,7 @@ class ChessGame:
             'game_start_time': str(self._start_time),
             'game_end_time': str(self._end_time),
             'game_time': str(self._end_time - self._start_time),
-            'fen': self._board.fen()
+            'fen': self._board.fen(),
+            'white_remaining': white_count,
+            'black_remaining': black_count
         }
