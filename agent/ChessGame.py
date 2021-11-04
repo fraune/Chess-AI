@@ -26,6 +26,7 @@ class ChessGame:
             game_over = self.play_turn()
             if game_over:
                 return True
+        self.logger.log({'fen': self._board.fen()})
 
     def play_turn(self) -> bool:
         move = self._white_player.get_next_move(self._board) \
@@ -44,7 +45,6 @@ class ChessGame:
             'game status': self._game_status(),
             'next turn': self._whose_turn_color(),
             'turn number': self._board.fullmove_number,  # starts at 1, increments only after black moves
-            'half moves made': self._board.halfmove_clock,
             'is check': self._board.is_check()
         }
 
