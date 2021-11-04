@@ -1,17 +1,12 @@
 import random
-from enum import Enum
 
 import chess
 
 from agent.BoardStateTreeNode import BoardStateTreeNode
+from agent.PlayerType import PlayerType
 from agent.Scorer import Scorer
 from config import MAXIMUM_TREE_DEPTH, MAXIMUM_TREE_WIDTH
 from utility.Logger import Logger
-
-
-class PlayerType(Enum):
-    RANDOM = 'random'
-    SEARCH = 'search'
 
 
 def create_player_from_enum(player_type: PlayerType):

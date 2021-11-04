@@ -1,4 +1,4 @@
-from agent.Player import PlayerType
+from agent.PlayerType import PlayerType
 
 # utility.Logger.Logger
 PRINT_TO_CONSOLE: bool = True
