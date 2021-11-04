@@ -8,7 +8,10 @@ from utility.Logger import Logger
 
 
 class Player:
-    pass
+    logger: Logger
+
+    def __init__(self):
+        self.logger = Logger()
 
 
 class SearchPlayer(Player):
@@ -25,7 +28,7 @@ class SearchPlayer(Player):
         moves = bstn.evaluate_moves(Scorer())
 
         if len(moves) == 0:
-            print('No scored moves')
+            self.logger.log('No scored moves')
             return
 
         moves.sort(key=lambda tup: tup[0], reverse=True)
@@ -41,7 +44,7 @@ class RandomPlayer(Player):
         moves = bstn.enumerate_moves()
 
         if len(moves) <= 0:
-            print('No scored moves')
+            self.logger.log('No scored moves')
             return
 
         move_index = random.randint(0, len(moves) - 1)
