@@ -25,7 +25,8 @@ class ChessGame:
             self.print_game_stats()
             game_over = self.play_turn()
             if game_over:
-                return True
+                break
+        self.print_game_stats()
         self.logger.log({'fen': self._board.fen()})
 
     def play_turn(self) -> bool:
