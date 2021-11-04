@@ -9,7 +9,7 @@ from utility.Logger import Logger
 
 class ChessGame:
     logger: Logger
-    _board: chess.Board = chess.Board()
+    _board: chess.Board
     _plies_made: int = 0
     _white_player: Player = RandomPlayer()  # SearchPlayer(3, 15)
     _black_player: Player = RandomPlayer()
@@ -18,6 +18,7 @@ class ChessGame:
 
     def __init__(self):
         self.logger = Logger()
+        self._board = chess.Board()
         self.logger.log('Chess game initialized')
         self._start_time = datetime.now()
 
