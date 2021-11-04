@@ -15,16 +15,16 @@ class Player:
 
 
 class SearchPlayer(Player):
-    tree_depth: int
-    tree_width: int
+    _tree_depth: int
+    _tree_width: int
 
     def __init__(self, depth: int, width: int):
-        self.tree_depth = depth
-        self.tree_width = width
+        self._tree_depth = depth
+        self._tree_width = width
 
     def get_next_move(self, board: chess.Board):
-        bstn = BoardStateTreeNode(board, max_children=self.tree_width)
-        bstn.populate_tree(self.tree_depth)
+        bstn = BoardStateTreeNode(board, max_children=self._tree_width)
+        bstn.populate_tree(self._tree_depth)
         moves = bstn.evaluate_moves(Scorer())
 
         if len(moves) == 0:
