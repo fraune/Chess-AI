@@ -3,9 +3,11 @@ import random
 import chess
 
 from agent import Scorer
+from utility.logger import Logger
 
 
 class BoardStateTreeNode:
+    logger: Logger
     _board: chess.Board
     _move: chess.Move
     _children: list['BoardStateTreeNode']
@@ -14,6 +16,7 @@ class BoardStateTreeNode:
     _max_children: int  # Limit width of tree
 
     def __init__(self, board: chess.Board, move: chess.Move = None, max_children: int = None):
+        self.logger = Logger()
         self._board = board
         self._move = move
         self._children = []
@@ -23,23 +26,23 @@ class BoardStateTreeNode:
 
     def populate_tree(self, depth: int):
         if depth <= 0:
-            print('populate_tree: Reached depth base case.')
+            # self.logger.log('populate_tree: Reached depth base case.')
             return
 
         if self._board.is_game_over():
-            print('populate_tree: No more moves to populate. Game is over at current node.')
+            self.logger.log('populate_tree: No more moves to populate. Game is over at current node.')
             return
 
         moves = self.enumerate_moves()
 
         # Reduce move set to num max children
-        print(f'populate_tree: {len(moves)} legal moves found')
+        self.logger.log(f'populate_tree: {len(moves)} legal moves found')
         if self._max_children is not None:
             while len(moves) > self._max_children:
                 index_to_remove = random.randint(0, len(moves) - 1)
                 moves.pop(index_to_remove)
 
-        print(f'populate_tree: {len(moves)} moves to be added as children')
+        self.logger.log(f'populate_tree: {len(moves)} moves to be added as children')
         for move in moves:
             child_board = self._board.copy()
             child_board.push(move)  # push move here?
