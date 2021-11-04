@@ -20,6 +20,21 @@ class Player:
         self.logger = Logger()
 
 
+class RandomPlayer(Player):
+    player_type = PlayerType.RANDOM
+
+    def get_next_move(self, board: chess.Board):
+        bstn = BoardStateTreeNode(board)
+        moves = bstn.enumerate_moves()
+
+        if len(moves) <= 0:
+            self.logger.log('No scored moves')
+            return
+
+        move_index = random.randint(0, len(moves) - 1)
+        return moves[move_index]
+
+
 class SearchPlayer(Player):
     player_type = PlayerType.SEARCH
     _tree_depth: int
@@ -42,18 +57,3 @@ class SearchPlayer(Player):
 
         # index 0 picks tuple with highest score for white, index 1 picks move out of that tuple
         return moves[0][1]
-
-
-class RandomPlayer(Player):
-    player_type = PlayerType.RANDOM
-
-    def get_next_move(self, board: chess.Board):
-        bstn = BoardStateTreeNode(board)
-        moves = bstn.enumerate_moves()
-
-        if len(moves) <= 0:
-            self.logger.log('No scored moves')
-            return
-
-        move_index = random.randint(0, len(moves) - 1)
-        return moves[move_index]
