@@ -30,9 +30,11 @@ def run_simulation_set():
     sw.close()
 
 
-def run_one_simulation(simulation_number) -> dict:
+def run_one_simulation_v1(simulation_number) -> dict:
     logger.log(f'Simulation #{simulation_number} beginning')
-    game = ChessGame()
-    game.play_until(MAXIMUM_PLIES_PER_GAME)
+    white_player = create_player_from_enum(WHITE_PLAYER_TYPE)
+    black_player = create_player_from_enum(BLACK_PLAYER_TYPE)
+    game = ChessGame(white_player, black_player)
+    game.play_until(v1_MAXIMUM_PLIES_PER_GAME)
     logger.log(f'Simulation #{simulation_number} complete')
     return game.summary()

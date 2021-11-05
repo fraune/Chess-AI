@@ -4,8 +4,6 @@ from typing import Optional
 import chess
 
 from app.agent import Player
-from app.agent.Player import create_player_from_enum
-from app.config import WHITE_PLAYER_TYPE, BLACK_PLAYER_TYPE
 from app.utility.Logger import Logger
 
 
@@ -18,12 +16,12 @@ class ChessGame:
     _start_time: datetime
     _end_time: datetime
 
-    def __init__(self):
+    def __init__(self, white_player: Player, black_player: Player):
         self._start_time = datetime.now()
         self.logger = Logger()
         self._board = chess.Board()
-        self._white_player = create_player_from_enum(WHITE_PLAYER_TYPE)
-        self._black_player = create_player_from_enum(BLACK_PLAYER_TYPE)
+        self._white_player = white_player
+        self._black_player = black_player
         self.logger.log('Chess game initialized')
 
     def reset(self):
