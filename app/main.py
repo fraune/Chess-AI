@@ -1,4 +1,4 @@
-from app.simulator.simulator import run_simulation_set_v2
+from app.simulator.simulator_v2 import run_simulation_set_v2
 
 
 def main():
