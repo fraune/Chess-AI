@@ -1,7 +1,7 @@
 import json
 from datetime import datetime
 
-from app.config import SUMMARY_FILE_NAME
+from app.config import SUMMARY_FILE_NAME, GAMES_TO_SIMULATE
 
 
 class SummaryWriter(object):
@@ -18,7 +18,7 @@ class SummaryWriter(object):
     def _initialize(self, file_name: str = None):
         if not file_name:
             now = datetime.now().strftime('%Y%m%d%H%M%S')
-            file_name = f'{now}-chess-summary.json'
+            file_name = f'{now}-{GAMES_TO_SIMULATE}x-chess-summary.json'
         self._file = open(f'../output/{file_name}', 'w')
         self._file.write('[')
 
