@@ -30,7 +30,7 @@ def run_simulation_set():
     sw.close()
 
 
-def run_one_simulation(simulation_number):
+def run_one_simulation(simulation_number) -> dict:
     logger.log(f'Simulation #{simulation_number} beginning')
     game = ChessGame()
     game.play_until(MAXIMUM_PLIES_PER_GAME)
