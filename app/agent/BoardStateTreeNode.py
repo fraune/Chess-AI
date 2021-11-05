@@ -27,7 +27,7 @@ class BoardStateTreeNode:
     def populate_tree(self, depth: int):
         if depth <= 0:
             # self.logger.log('populate_tree: Reached depth base case.')
-            return
+            return None
 
         if self._board.is_game_over():
             self.logger.log('populate_tree: No more moves to populate. Game is over at current node.')
