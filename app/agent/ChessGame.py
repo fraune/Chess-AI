@@ -3,10 +3,10 @@ from typing import Optional
 
 import chess
 
-from agent import Player
-from agent.Player import create_player_from_enum
+from app.agent import Player
+from app.agent.Player import create_player_from_enum
 from config import WHITE_PLAYER_TYPE, BLACK_PLAYER_TYPE
-from utility.Logger import Logger
+from app.utility.Logger import Logger
 
 
 class ChessGame:

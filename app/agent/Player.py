@@ -2,11 +2,11 @@ import random
 
 import chess
 
-from agent.BoardStateTreeNode import BoardStateTreeNode
-from agent.PlayerType import PlayerType
-from agent.Scorer import Scorer
+from app.agent.BoardStateTreeNode import BoardStateTreeNode
+from app.agent.PlayerType import PlayerType
+from app.agent.Scorer import Scorer
 from config import MAXIMUM_TREE_DEPTH, MAXIMUM_TREE_WIDTH
-from utility.Logger import Logger
+from app.utility.Logger import Logger
 
 
 def create_player_from_enum(player_type: PlayerType):
@@ -59,7 +59,7 @@ class SearchPlayer(Player):
             self.logger.log('No scored moves')
             return
 
-        moves.sort(key=lambda tup: tup[0], reverse=True)
+        moves.sort(key=lambda tup: tup[0], reverse=True) # TODO: test for black vs white
 
         # index 0 picks tuple with highest score for white, index 1 picks move out of that tuple
         return moves[0][1]

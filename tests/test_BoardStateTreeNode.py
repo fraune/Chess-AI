@@ -4,7 +4,7 @@ from unittest import TestCase
 
 import chess
 
-from agent.BoardStateTreeNode import BoardStateTreeNode
+from app.agent import BoardStateTreeNode
 
 
 class TestBoardStateTreeNode(TestCase):

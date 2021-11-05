@@ -1,9 +1,9 @@
 from datetime import datetime
 
-from agent.ChessGame import ChessGame
+from app.agent.ChessGame import ChessGame
 from config import GAMES_TO_SIMULATE, MAXIMUM_PLIES_PER_GAME
-from utility.Logger import Logger
-from utility.SummaryWriter import SummaryWriter
+from app.utility.Logger import Logger
+from app.utility.SummaryWriter import SummaryWriter
 
 logger = Logger()
 

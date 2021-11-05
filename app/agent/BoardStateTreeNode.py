@@ -2,8 +2,8 @@ import random
 
 import chess
 
-from agent import Scorer
-from utility.Logger import Logger
+from app.agent import Scorer
+from app.utility.Logger import Logger
 
 
 class BoardStateTreeNode:
