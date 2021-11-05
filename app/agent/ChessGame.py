@@ -107,7 +107,7 @@ class ChessGame:
             'plies_made': self._plies_made,
             'game_start_time': str(self._start_time),
             'game_end_time': str(self._end_time),
-            'game_time': str(self._end_time - self._start_time),
+            'game_time_seconds': (self._end_time - self._start_time).total_seconds(),
             'fen': self._board.fen(),
             'white_remaining': white_count,
             'black_remaining': black_count
