@@ -3,7 +3,7 @@ from datetime import datetime
 from app.agent.ChessGame import ChessGame
 from app.agent.Player import create_player_from_enum
 from app.agent.PlayerType import PlayerType
-from app.config import v1_MAXIMUM_PLIES_PER_GAME, v2_SIMULATION_CONFIGURATIONS
+from app.config import V1_MAXIMUM_PLIES_PER_GAME, V2_SIMULATION_CONFIGURATIONS
 from app.simulator.Simulation import Simulation
 from app.utility.LogLevel import LogLevel
 from app.utility.Logger import Logger
@@ -12,7 +12,7 @@ from app.utility.SummaryWriter import SummaryWriter
 logger = Logger()
 
 
-def run_simulation_set_v2(configurations: list[Simulation] = v2_SIMULATION_CONFIGURATIONS):
+def run_simulation_set_v2(configurations: list[Simulation] = V2_SIMULATION_CONFIGURATIONS):
     start_datetime = datetime.now()
 
     total_games = 0
@@ -53,6 +53,6 @@ def run_one_simulation_v2(simulation_number, white_player_type: PlayerType, blac
     white_player = create_player_from_enum(white_player_type)
     black_player = create_player_from_enum(black_player_type)
     game = ChessGame(white_player, black_player)
-    game.play_until(v1_MAXIMUM_PLIES_PER_GAME)
+    game.play_until(V1_MAXIMUM_PLIES_PER_GAME)
     logger.log(f'Simulation #{simulation_number} complete')
     return game.summary()

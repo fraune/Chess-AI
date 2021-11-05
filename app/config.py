@@ -13,10 +13,12 @@ LOG_LEVEL_FILTER: LogLevel = LogLevel.INFO
 
 # simulator.simulator
 #   Affects v1 simulations only
-v1_GAMES_TO_SIMULATE: int = 10  # Random vs Random ~1000 games per minute?
-v1_MAXIMUM_PLIES_PER_GAME: int = 1000  # Most "Random VS Random" games are completed in less than 300 total plies
+V1_GAMES_TO_SIMULATE: int = 10  # Random vs Random ~1000 games per minute?
+V1_MAXIMUM_PLIES_PER_GAME: int = 1000  # Most "Random VS Random" games are completed in less than 300 total plies
 #   Affects v2 simulations only
-v2_SIMULATION_CONFIGURATIONS: list[Simulation] = experiment
+V2_SIMULATION_CONFIGURATIONS: list[Simulation] = experiment
+#   Affects v3 simulations only
+V3_SIMULATION_THREADS: int = 8
 
 # agent.ChessGame.ChessGame
 #   Affects v1 simulations only
