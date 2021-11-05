@@ -11,18 +11,20 @@ logger = Logger()
 def run_simulation_set():
     sw = SummaryWriter()
     start_datetime = datetime.now()
+    now = start_datetime.strftime('%Y%m%d%H%M%S')
+    file_name = f'{now}-{v1_GAMES_TO_SIMULATE}x-chess-summary.json'
+    sw = SummaryWriter(file_name)
 
-    for simulation in range(1, GAMES_TO_SIMULATE + 1):
-        print(f'Starting game {simulation}/{GAMES_TO_SIMULATE}')
-        summary = run_one_simulation(simulation)
+    for simulation in range(1, v1_GAMES_TO_SIMULATE + 1):
+        print(f'Starting game {simulation}/{v1_GAMES_TO_SIMULATE}')
+        summary = run_one_simulation_v1(simulation)
         dict_to_write = {'simulation': simulation, **summary}
         sw.write_summary(dict_to_write)
 
     end_datetime = datetime.now()
     time_delta = end_datetime - start_datetime
-    avg_time = time_delta.total_seconds() / GAMES_TO_SIMULATE
-    print(f'Ran {GAMES_TO_SIMULATE} simulations in {str(time_delta)},'
-          f'for an average of {avg_time:.6f} seconds per game.')
+    avg_time = time_delta.total_seconds() / v1_GAMES_TO_SIMULATE
+    print(f'Ran {v1_GAMES_TO_SIMULATE} games in {str(time_delta)} for an average of {avg_time:.6f} seconds per game.')
 
     logger.flush()
     logger.close()
