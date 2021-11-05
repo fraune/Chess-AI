@@ -11,7 +11,7 @@ LOG_FILE_NAME: Optional[str] = None  # Used if PRINT_TO_FILE is set. Overrides L
 SUMMARY_FILE_NAME: Optional[str] = None  # Overrides SummaryWriter's automatic file name generation
 
 # utility.simulator
-GAMES_TO_SIMULATE: int = 3
+GAMES_TO_SIMULATE: int = 100
 MAXIMUM_PLIES_PER_GAME: int = 1000  # Most "Random VS Random" games are completed in less than 300 total plies
 
 # agent.ChessGame.ChessGame
