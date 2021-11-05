@@ -11,12 +11,12 @@ LOG_FILE_NAME: Optional[str] = None  # Used if PRINT_TO_FILE is set. Overrides L
 SUMMARY_FILE_NAME: Optional[str] = None  # Overrides SummaryWriter's automatic file name generation
 
 # utility.simulator
-GAMES_TO_SIMULATE: int = 100
+GAMES_TO_SIMULATE: int = 10000  # Random vs Random ~1000 games per minute?
 MAXIMUM_PLIES_PER_GAME: int = 1000  # Most "Random VS Random" games are completed in less than 300 total plies
 
 # agent.ChessGame.ChessGame
 WHITE_PLAYER_TYPE: PlayerType = PlayerType.RANDOM
-BLACK_PLAYER_TYPE: PlayerType = PlayerType.RANDOM
+BLACK_PLAYER_TYPE: PlayerType = PlayerType.RANDOM  # Haven't validated Search with Black
 
 # agent.Player.SearchPlayer
 MAXIMUM_TREE_DEPTH: int = 3  # Factor to limit the number of plies to look ahead
