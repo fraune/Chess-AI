@@ -11,7 +11,7 @@ PRINT_TO_FILE: bool = False
 LOG_FILE_NAME: Optional[str] = None  # Overrides Logger's automatic file name generation. Used if PRINT_TO_FILE is set.
 LOG_LEVEL_FILTER: LogLevel = LogLevel.INFO
 
-# utility.simulator
+# simulator.simulator
 #   Affects v1 simulations only
 v1_GAMES_TO_SIMULATE: int = 10  # Random vs Random ~1000 games per minute?
 v1_MAXIMUM_PLIES_PER_GAME: int = 1000  # Most "Random VS Random" games are completed in less than 300 total plies
