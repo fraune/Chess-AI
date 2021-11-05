@@ -22,7 +22,7 @@ class Logger(object):
             if not file_name:
                 now = datetime.now().strftime('%Y%m%d%H%M%S')
                 file_name = f'{now}-chess-game.txt'
-            self._file = open(f'output/{file_name}', 'a')
+            self._file = open(f'../output/{file_name}', 'a')
             self._print_to_file = print_to_file
             self.log('Logger initialized')
 

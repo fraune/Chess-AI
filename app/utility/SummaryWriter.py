@@ -19,7 +19,7 @@ class SummaryWriter(object):
         if not file_name:
             now = datetime.now().strftime('%Y%m%d%H%M%S')
             file_name = f'{now}-chess-summary.json'
-        self._file = open(f'output/{file_name}', 'w')
+        self._file = open(f'../output/{file_name}', 'w')
         self._file.write('[')
 
     def write_summary(self, summary: dict, flush: bool = False):
