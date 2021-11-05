@@ -5,9 +5,9 @@ from app.agent.Player import create_player_from_enum
 from app.agent.PlayerType import PlayerType
 from app.config import v1_GAMES_TO_SIMULATE, v1_MAXIMUM_PLIES_PER_GAME, BLACK_PLAYER_TYPE, WHITE_PLAYER_TYPE, \
     v2_SIMULATION_CONFIGURATIONS
+from app.simulator.Simulation import Simulation
 from app.utility.LogLevel import LogLevel
 from app.utility.Logger import Logger
-from app.utility.Simulation import Simulation
 from app.utility.SummaryWriter import SummaryWriter
 
 logger = Logger()

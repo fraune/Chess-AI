@@ -1,5 +1,5 @@
 from app.agent.PlayerType import PlayerType
-from app.utility.Simulation import Simulation
+from app.simulator.Simulation import Simulation
 
 experiment = [
     Simulation(100, PlayerType.RANDOM, PlayerType.RANDOM),

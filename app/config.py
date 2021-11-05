@@ -1,9 +1,9 @@
 from typing import Optional
 
 from app.agent.PlayerType import PlayerType
+from app.experiment import experiment
+from app.simulator.Simulation import Simulation
 from app.utility.LogLevel import LogLevel
-from app.utility.Simulation import Simulation
-from app.utility.experiment import experiment
 
 # utility.Logger.Logger
 PRINT_TO_CONSOLE: bool = True
