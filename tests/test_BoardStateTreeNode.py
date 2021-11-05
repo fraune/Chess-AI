@@ -4,7 +4,7 @@ from unittest import TestCase
 
 import chess
 
-from app.agent import BoardStateTreeNode
+from app.agent.BoardStateTreeNode import BoardStateTreeNode
 
 
 class TestBoardStateTreeNode(TestCase):
@@ -21,6 +21,7 @@ class TestBoardStateTreeNode(TestCase):
         assert root_node._max_children is None
 
     def test_populate_tree_negative_depth_returns(self):
+        # Arrange
         board = chess.Board()
         root_node = BoardStateTreeNode(board)
 

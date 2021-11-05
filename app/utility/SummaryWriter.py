@@ -1,7 +1,7 @@
 import json
 from datetime import datetime
 
-from config import SUMMARY_FILE_NAME
+from app.config import SUMMARY_FILE_NAME
 
 
 class SummaryWriter(object):

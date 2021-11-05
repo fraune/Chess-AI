@@ -1,7 +1,7 @@
 from datetime import datetime
 
 from app.agent.ChessGame import ChessGame
-from config import GAMES_TO_SIMULATE, MAXIMUM_PLIES_PER_GAME
+from app.config import GAMES_TO_SIMULATE, MAXIMUM_PLIES_PER_GAME
 from app.utility.Logger import Logger
 from app.utility.SummaryWriter import SummaryWriter
 

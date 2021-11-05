@@ -1,6 +1,6 @@
 from typing import Optional
 
-from app.agent import PlayerType
+from app.agent.PlayerType import PlayerType
 
 # utility.Logger.Logger
 PRINT_TO_CONSOLE: bool = False

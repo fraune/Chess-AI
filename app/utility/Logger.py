@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from config import PRINT_TO_CONSOLE, PRINT_TO_FILE, LOG_FILE_NAME
+from app.config import PRINT_TO_CONSOLE, PRINT_TO_FILE, LOG_FILE_NAME
 
 
 class Logger(object):

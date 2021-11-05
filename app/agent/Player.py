@@ -5,7 +5,7 @@ import chess
 from app.agent.BoardStateTreeNode import BoardStateTreeNode
 from app.agent.PlayerType import PlayerType
 from app.agent.Scorer import Scorer
-from config import MAXIMUM_TREE_DEPTH, MAXIMUM_TREE_WIDTH
+from app.config import MAXIMUM_TREE_DEPTH, MAXIMUM_TREE_WIDTH
 from app.utility.Logger import Logger
 
 

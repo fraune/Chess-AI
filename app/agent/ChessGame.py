@@ -5,7 +5,7 @@ import chess
 
 from app.agent import Player
 from app.agent.Player import create_player_from_enum
-from config import WHITE_PLAYER_TYPE, BLACK_PLAYER_TYPE
+from app.config import WHITE_PLAYER_TYPE, BLACK_PLAYER_TYPE
 from app.utility.Logger import Logger
 
 
