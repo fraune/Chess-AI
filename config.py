@@ -3,7 +3,7 @@ from typing import Optional
 from agent.PlayerType import PlayerType
 
 # utility.Logger.Logger
-PRINT_TO_CONSOLE: bool = True
+PRINT_TO_CONSOLE: bool = False
 PRINT_TO_FILE: bool = True
 LOG_FILE_NAME: Optional[str] = None  # Used if PRINT_TO_FILE is set. Overrides Logger's automatic file name generation.
 
