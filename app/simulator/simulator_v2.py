@@ -4,7 +4,7 @@ from app.agent.ChessGame import ChessGame
 from app.agent.Player import create_player_from_enum
 from app.agent.PlayerType import PlayerType
 from app.config import V1_MAXIMUM_PLIES_PER_GAME, V2_SIMULATION_CONFIGURATIONS
-from app.simulator.Simulation import Simulation
+from app.simulator.Configuration import Configuration
 from app.utility.LogLevel import LogLevel
 from app.utility.Logger import Logger
 from app.utility.SummaryWriter import SummaryWriter
@@ -12,7 +12,7 @@ from app.utility.SummaryWriter import SummaryWriter
 logger = Logger()
 
 
-def run_simulation_set_v2(configurations: list[Simulation] = V2_SIMULATION_CONFIGURATIONS):
+def run_simulation_set_v2(configurations: list[Configuration] = V2_SIMULATION_CONFIGURATIONS):
     start_datetime = datetime.now()
 
     total_games = 0

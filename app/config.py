@@ -1,8 +1,8 @@
 from typing import Optional
 
 from app.agent.PlayerType import PlayerType
-from app.experiment import experiment
-from app.simulator.Simulation import Simulation
+from app.experiment import experiment_small
+from app.simulator.Configuration import Configuration
 from app.utility.LogLevel import LogLevel
 
 # utility.Logger.Logger
@@ -16,9 +16,7 @@ LOG_LEVEL_FILTER: LogLevel = LogLevel.INFO
 V1_GAMES_TO_SIMULATE: int = 10  # Random vs Random ~1000 games per minute?
 V1_MAXIMUM_PLIES_PER_GAME: int = 1000  # Most "Random VS Random" games are completed in less than 300 total plies
 #   Affects v2 simulations only
-V2_SIMULATION_CONFIGURATIONS: list[Simulation] = experiment
-#   Affects v3 simulations only
-V3_SIMULATION_THREADS: int = 8
+V2_SIMULATION_CONFIGURATIONS: list[Configuration] = experiment_small  # experiment_large
 
 # agent.ChessGame.ChessGame
 #   Affects v1 simulations only
