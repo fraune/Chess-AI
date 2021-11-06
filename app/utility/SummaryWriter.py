@@ -6,14 +6,14 @@ class SummaryWriter(object):
     _file = None
     _dicts_written = 0
 
-    def __new__(cls, file_name: str):
+    def __new__(cls):
         if cls._instance is None:
             cls._instance = super(SummaryWriter, cls).__new__(cls)
-            cls._instance._initialize(file_name)
+            # cls._instance._initialize(file_name)
         return cls._instance
 
-    def _initialize(self, file_name: str):
-        self._file = open(f'../output/{file_name}', 'w')
+    def initialize(self, file_name: str):
+        self._file = open(f'../../output/{file_name}', 'w')
         self._file.write('[')
 
     def write_summary(self, summary: dict, flush: bool = False):
