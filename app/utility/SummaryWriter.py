@@ -16,7 +16,7 @@ class SummaryWriter(object):
         self._file = open(f'../../output/{file_name}', 'w')
         self._file.write('[')
 
-    def write_summary(self, summary: dict, flush: bool = False):
+    def write_summary(self, summary: dict, flush: bool = True):
         if self._dicts_written > 0:
             self._file.write(', ')
         json_text = json.dumps(summary)
