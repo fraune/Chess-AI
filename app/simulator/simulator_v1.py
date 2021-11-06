@@ -2,7 +2,7 @@ from datetime import datetime
 
 from app.agent.ChessGame import ChessGame
 from app.agent.Player import create_player_from_enum
-from app.config import V1_GAMES_TO_SIMULATE, WHITE_PLAYER_TYPE, BLACK_PLAYER_TYPE, V1_MAXIMUM_PLIES_PER_GAME
+from app.config import V1_GAMES_TO_SIMULATE, WHITE_PLAYER_TYPE, BLACK_PLAYER_TYPE, MAXIMUM_PLIES_PER_GAME
 from app.simulator.simulator_v2 import logger
 from app.utility.Logger import Logger
 from app.utility.SummaryWriter import SummaryWriter
@@ -38,6 +38,6 @@ def run_one_simulation_v1(simulation_number) -> dict:
     white_player = create_player_from_enum(WHITE_PLAYER_TYPE)
     black_player = create_player_from_enum(BLACK_PLAYER_TYPE)
     game = ChessGame(white_player, black_player)
-    game.play_until(V1_MAXIMUM_PLIES_PER_GAME)
+    game.play_until(MAXIMUM_PLIES_PER_GAME)
     logger.log(f'Simulation #{simulation_number} complete')
     return game.summary()
