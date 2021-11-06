@@ -12,11 +12,11 @@ LOG_FILE_NAME: Optional[str] = None  # Overrides Logger's automatic file name ge
 LOG_LEVEL_FILTER: LogLevel = LogLevel.INFO
 
 # simulator.simulator
+MAXIMUM_PLIES_PER_GAME: int = 1000  # Most "Random VS Random" games are completed in less than 300 total plies
 #   Affects v1 simulations only
 V1_GAMES_TO_SIMULATE: int = 10  # Random vs Random ~1000 games per minute?
-V1_MAXIMUM_PLIES_PER_GAME: int = 1000  # Most "Random VS Random" games are completed in less than 300 total plies
-#   Affects v2 simulations only
-V2_SIMULATION_CONFIGURATIONS: list[Configuration] = experiment_small  # experiment_large
+#   Affects v2 and v3 simulations only
+SIMULATION_CONFIGURATIONS: list[Configuration] = experiment_small
 
 # agent.ChessGame.ChessGame
 #   Affects v1 simulations only
