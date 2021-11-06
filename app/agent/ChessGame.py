@@ -4,6 +4,7 @@ from typing import Optional
 import chess
 
 from app.agent import Player
+from app.agent.PlayerType import PlayerType
 from app.utility.Logger import Logger
 
 
@@ -95,7 +96,8 @@ class ChessGame:
 
     def summary(self) -> dict:
         white_count, black_count = self._count_pieces()
-        return {
+        
+        summary_json = {
             'white_player_type': self._white_player.player_type.name,
             'black_player_type': self._black_player.player_type.name,
             'game_state': self._game_status(),
@@ -108,5 +110,14 @@ class ChessGame:
             'game_time_seconds': (self._end_time - self._start_time).total_seconds(),
             'fen': self._board.fen(),
             'white_remaining': white_count,
-            'black_remaining': black_count
+            'black_remaining': black_count,
         }
+
+        if self._white_player.player_type is PlayerType.SEARCH:
+            summary_json['white_search_depth'] = self._white_player.tree_depth
+            summary_json['white_search_width'] = self._white_player.tree_width
+        if self._black_player.player_type is PlayerType.SEARCH:
+            summary_json['black_search_depth'] = self._black_player.tree_depth
+            summary_json['black_search_width'] = self._black_player.tree_width
+
+        return summary_json
