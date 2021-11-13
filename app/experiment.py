@@ -1,6 +1,11 @@
 from app.agent.PlayerType import PlayerType
 from app.simulator.Configuration import Configuration
 
+experiment_rvr = [
+    Configuration(128, PlayerType.SEARCH, PlayerType.RANDOM, 2, 999),
+    Configuration(32, PlayerType.SEARCH, PlayerType.RANDOM, 3, 999)
+]
+
 experiment_tiny = [
     Configuration(4, PlayerType.RANDOM, PlayerType.RANDOM),
     Configuration(4, PlayerType.SEARCH, PlayerType.RANDOM, 1, 1),
