@@ -1,7 +1,7 @@
 from typing import Optional
 
 from app.agent.PlayerType import PlayerType
-from app.experiment import experiment_rvr
+from app.experiment import experiment_xyz
 from app.simulator.Configuration import Configuration
 from app.utility.LogLevel import LogLevel
 
@@ -16,7 +16,7 @@ MAXIMUM_PLIES_PER_GAME: int = 1000  # Most "Random VS Random" games are complete
 #   Affects v1 simulations only
 V1_GAMES_TO_SIMULATE: int = 10  # Random vs Random ~1000 games per minute?
 #   Affects v2 and v3 simulations only
-SIMULATION_CONFIGURATIONS: list[Configuration] = experiment_rvr
+SIMULATION_CONFIGURATIONS: list[Configuration] = experiment_xyz
 
 # agent.ChessGame.ChessGame
 #   Affects v1 simulations only
